@@ -1,0 +1,9 @@
+name,type,capacity_mw,fuel,hub,online_year
+Limestone_Station,PowerPlant,1850,Coal,HB_NORTH,1985
+WA_Parish,PowerPlant,3653,Natural Gas,HB_SOUTH,1982
+Comanche_Peak,PowerPlant,2430,Nuclear,HB_NORTH,1990
+Sweetwater_Wind,PowerPlant,585,Wind,HB_WEST,2007
+Permian_Solar,PowerPlant,420,Solar,HB_WEST,2020
+Martin_Lake,PowerPlant,2380,Coal,HB_NORTH,1977
+Deer_Park_Energy,PowerPlant,1238,Natural Gas,HB_SOUTH,2001
+Gulf_Wind,PowerPlant,283,Wind,HB_SOUTH,2009

@@ -1,0 +1,7 @@
+name,type,zone,market
+HB_HOUSTON,Hub,Houston,ERCOT
+HB_BUSAVG,Hub,Bus Average,ERCOT
+LZ_SOUTH,LoadZone,South,ERCOT
+LZ_NORTH,LoadZone,North,ERCOT
+LZ_WEST,LoadZone,West,ERCOT
+LZ_HOUSTON,LoadZone,Houston,ERCOT
