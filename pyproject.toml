@@ -11,4 +11,6 @@ dependencies = [
     "pandas>=3.0.5",
     "pyvis>=0.3.2",
     "streamlit>=1.61.1",
+    "mcp[cli]>=2.0.0",
+    "modelcontextprotocol>=1.0.1",
 ]

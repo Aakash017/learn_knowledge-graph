@@ -48,6 +48,14 @@ def load_hubs(kg: Neo4jKnowledgeGraph, filepath: str):
 def main():
     kg = Neo4jKnowledgeGraph(uri="bolt://localhost:7687")
     
+    # Clear existing data first
+    print("Clearing existing data...")
+    kg.clear()
+    
+    # Create market entity first (hubs connect to it)
+    print("Creating ERCOT market...")
+    kg.add_entity("ERCOT", "Market", country="USA", state="Texas")
+    
     print("Loading hubs...")
     load_hubs(kg, 'data/hubs.csv')
     
