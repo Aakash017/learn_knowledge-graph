@@ -139,6 +139,7 @@ uv run mcp_run.py
 | `fetch_fuel_types` | Get fuel types for a market | "What fuel types are used in ERCOT?" |
 | `fetch_power_plants` | Get power plants for a market | "What power plants are in ERCOT?" |
 | `fetch_power_plants_by_fuel` | Get plants by fuel type | "Which plants use wind energy?" |
+| `fetch_power_plants_by_hub` | Get plants supplying a hub | "What plants supply HB_SOUTH?" |
 
 ### Sample Questions for Testing
 
@@ -157,6 +158,9 @@ uv run mcp_run.py
 
 5. "Which power plants use wind energy?"
    → Sweetwater_Wind (585 MW), Gulf_Wind (283 MW)
+
+6. "What power plants supply HB_SOUTH?"
+   → WA_Parish (3653 MW), Deer_Park_Energy (1238 MW), Gulf_Wind (283 MW)
 ```
 
 ### Kiro IDE Configuration
@@ -321,3 +325,35 @@ python load_data.py
 - streamlit >= 1.0.0
 - pyvis >= 0.3.0
 - mcp[cli] >= 2.0.0
+
+## Roadmap / What's Next
+
+### Short-Term Enhancements
+- [ ] Add more markets (PJM, NYISO, CAISO, MISO, SPP)
+- [ ] Add transmission line relationships between hubs
+- [ ] Add more MCP tools (total capacity, renewable percentage, market comparison)
+- [ ] Add historical pricing data (LMPs)
+
+### Medium-Term (Production-Ready)
+- [ ] Add authentication to MCP server (API keys)
+- [ ] Connection pooling and retry logic
+- [ ] Logging and observability
+- [ ] Query caching for performance
+- [ ] Containerize with Docker for deployment
+
+### Long-Term Vision
+- [ ] Connect to real data sources (EIA, ERCOT OASIS, PJM Data Miner)
+- [ ] Build agent workflows for complex multi-step analysis
+- [ ] Add write operations via chat
+- [ ] Multi-tenant support with role-based access
+
+## Contributing
+
+1. Fork the repository
+2. Create a feature branch
+3. Make your changes
+4. Submit a pull request
+
+## License
+
+MIT License
