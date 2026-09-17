@@ -70,3 +70,12 @@ def fetch_power_plants_by_fuel(fuel_type: str) -> dict[str, Any]:
     Returns all power plants that use that fuel type"""
     from services import get_power_plants_by_fuel
     return get_power_plants_by_fuel(fuel_type)
+
+
+@mcp.tool()
+def fetch_power_plants_by_hub(hub_name: str) -> dict[str, Any]:
+    """fetch_power_plants_by_hub
+    Given a hub name, e.g. HB_SOUTH, HB_NORTH, HB_WEST,
+    Returns all power plants that supply that hub with their capacity and fuel type"""
+    from services import get_power_plants_by_hub
+    return get_power_plants_by_hub(hub_name)

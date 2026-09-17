@@ -2,8 +2,8 @@
 from src.energy_kg.neo4j_graph import Neo4jKnowledgeGraph
 
 kg = Neo4jKnowledgeGraph(
-        uri="bolt://localhost:7687",
-    )
+    uri="bolt://localhost:7687",
+)
 
 def get_all_markets():
     """Get all available markets in the knowledge graph."""
@@ -120,6 +120,34 @@ def get_power_plants_by_fuel(fuel_type):
         "fuel_type": fuel_type,
         "power_plants": plants,
         "count": len(plants)
+    }
+
+
+def get_power_plants_by_hub(hub_name):
+    """Get all power plants that supply a specific hub."""
+    query = """
+    MATCH (plant:Entity {type: 'PowerPlant'})-[:SUPPLIES]->(hub:Entity {name: $hub_name})
+    MATCH (plant)-[:USES_FUEL]->(fuel:Entity {type: 'FuelType'})
+    RETURN plant.name AS name, plant.capacity_mw AS capacity_mw, fuel.name AS fuel_type
+    ORDER BY plant.capacity_mw DESC
+    """
+    with kg.driver.session() as session:
+        result = session.run(query, hub_name=hub_name)
+        plants = []
+        total_capacity = 0
+        for record in result:
+            plants.append({
+                "name": record["name"],
+                "capacity_mw": record["capacity_mw"],
+                "fuel_type": record["fuel_type"]
+            })
+            total_capacity += record["capacity_mw"] or 0
+    
+    return {
+        "hub_name": hub_name,
+        "power_plants": plants,
+        "count": len(plants),
+        "total_capacity_mw": total_capacity
     }
 
 
